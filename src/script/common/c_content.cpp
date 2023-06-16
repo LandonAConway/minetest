@@ -337,7 +337,7 @@ void read_object_properties(lua_State *L, int index,
 			if (read_color(L, -1, &color))
 				prop->nametag_bgcolor = color;
 		} else {
-			prop->nametag_bgcolor = nullopt;
+			prop->nametag_bgcolor = std::nullopt;
 		}
 	}
 	lua_pop(L, 1);
@@ -478,6 +478,7 @@ TileDef read_tiledef(lua_State *L, int index, u8 drawtype, bool special)
 			// "break" is omitted here intentionaly, as PLANTLIKE
 			// FIRELIKE drawtype both should default to having
 			// backface_culling to false.
+			[[fallthrough]];
 		case NDT_MESH:
 		case NDT_LIQUID:
 			default_culling = false;
